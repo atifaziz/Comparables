@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+    <metadata>
+        <id>Comparables</id>
+        <version>1.0.0</version>
+        <title>C# Utility Methods for Comparables</title>
+        <authors>Atif Aziz</authors>
+        <owners>Atif Aziz</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://bitbucket.org/raboof/comparables</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <summary>Utility methods for comparable values, those that implement IComparable&lt;T&gt;</summary>
+        <description>C# source for utility methods (like Min and Max) that generically work with types implementing IComparable&lt;T&gt;.</description>
+        <copyright>Copyright (c) 2015 Atif Aziz. All rights reserved.</copyright>
+        <language>en-US</language>
+        <releaseNotes>Initial release</releaseNotes>
+        <tags>c#</tags>
+    </metadata>
+    <files>
+        <file src="*.cs" target="content\App_Packages\Comparables" exclude="AssemblyInfo.cs" />
+    </files>
+</package>
