@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{032CAECE-E104-4B60-A7A5-CEB534DE64DD}"
 	ProjectSection(SolutionItems) = preProject
 		Comparables.nuspec = Comparables.nuspec
+		COPYING.txt = COPYING.txt
 	EndProjectSection
 EndProject
 Global
