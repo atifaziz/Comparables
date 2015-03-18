@@ -17,6 +17,6 @@
         <tags>c#</tags>
     </metadata>
     <files>
-        <file src="*.cs" target="content\App_Packages\Comparables" exclude="AssemblyInfo.cs" />
+        <file src="*.cs" target="content\App_Packages\Comparables" exclude="AssemblyInfo.cs;Public.cs" />
     </files>
 </package>

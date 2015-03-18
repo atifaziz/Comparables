@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comparables.cs" />
+    <Compile Include="Public.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
