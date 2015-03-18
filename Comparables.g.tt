@@ -1,0 +1,72 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Globalization" #>
+<#@ output extension=".cs" #>
+<#
+    var nn = new[] { "one", "two", "three", "four", "five" };
+    var ns =
+        from e in nn.Select((n, i) => new { Name = n, Count = i + 1 }).Skip(1)
+        from seq in new[]
+        {
+            Enumerable.Range(1, e.Count)
+                      .Select((n, i) => new
+                      {
+                          N       = n,
+                          Str     = n.ToString(CultureInfo.InvariantCulture),
+                          Index   = i,
+                          IsFirst = i == 0,
+                          IsLast  = i + 1 == e.Count
+                      })
+        }
+        select new { e.Name, Seq = seq.ToArray() };
+#>
+#region Copyright (c) 2015 Atif Aziz. All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+#endregion
+
+// This code was generated (<#= DateTimeOffset.Now.ToString("r") #>) by a tool.
+// Any changes made manually will be lost next time this code is regenerated.
+
+using System;
+
+partial class Comparables
+{<# foreach (var e in ns) { #>
+
+    /// <summary>
+    /// Compares a pair of tuples of <#= e.Name #>.
+    /// </summary>
+    /// <returns>
+    /// A signed integer that is zero (0) if the tuples are equal,
+    /// less than zero if the first tuple compares lower in order and greater
+    /// than zero if second tuple compares higher in order.
+    /// </returns>
+
+    public static int Compare<<#= string.Join(", ", from n in e.Seq select "T" + n.Str) #>>(
+        /* tuple 1 */ <#= string.Join(", ", from n in e.Seq select string.Format("T{0} a{0}", n.Str)) #>,
+        /* tuple 2 */ <#= string.Join(", ", from n in e.Seq select string.Format("T{0} b{0}", n.Str)) #>)
+<#      foreach (var n in e.Seq) { #>
+        where T<#= n.Str #> : IComparable<T<#= n.Str #>>
+<#      } #>
+    {
+        int <#= string.Join(", ", from n in e.Seq where !n.IsLast select "cmp" + n.Str) #>;
+<#      foreach (var n in e.Seq) { #>
+        <#= n.IsFirst ? "return" : ":".PadLeft(6) #> <# 
+            if (!n.IsLast) { #>(cmp<#= n.Str #> = <# } #>a<#= n.Str #>.CompareTo(b<#= n.Str #>)<# if (!n.IsLast) { #>) != 0 ? cmp<#= n.Str #><# } #><# if (n.IsLast) { #>;<# } #>
+
+<#      } #>
+    }
+<#  } #>
+}

@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>Comparables</id>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
         <title>C# Utility Methods for Comparables</title>
         <authors>Atif Aziz</authors>
         <owners>Atif Aziz</owners>
@@ -13,7 +13,7 @@
         <description>C# source for utility methods (like Min and Max) that generically work with types implementing IComparable&lt;T&gt;.</description>
         <copyright>Copyright (c) 2015 Atif Aziz. All rights reserved.</copyright>
         <language>en-US</language>
-        <releaseNotes>Initial release</releaseNotes>
+        <releaseNotes>Added Compare methods to compare deconstructed tuples.</releaseNotes>
         <tags>c#</tags>
     </metadata>
     <files>
